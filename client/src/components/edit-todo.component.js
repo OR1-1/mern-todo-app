@@ -23,7 +23,7 @@ export default class EditTodo extends Component {
     }
   }
 
-  // life cycle method
+  // react life cycle method
   componentDidMount() {
     axios.get('http://localhost:4000/api/v1/todos/' + this.props.match.params.id)
     .then(response => {
