@@ -24,9 +24,6 @@ function App() {
               <li className="navbar-item">
                 <Link to="/create" className="nav-link">Create Todo</Link>
               </li>
-              {/* <li className="navbar-item">
-                <Link to="/edit/1" className="nav-link">Edit Todo</Link>
-              </li> */}
             </ul>
           </div>
         </nav>
