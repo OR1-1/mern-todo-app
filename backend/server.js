@@ -8,16 +8,13 @@ const PORT = 4000;
 
 let Todo = require('./todo.model');
 
-app.use(cors());
-app.use(bodyParser.json());
-
 // DataBase
 // mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true }); // deprecated
 // mongoose.connect("mongodb://10.10.50.116:27017/todos", { useUnifiedTopology: true, useNewUrlParser: true });
 mongoose
-.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-.then(() => console.log('Database Connected'))
-.catch(err => console.log(err));
+  .connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .then(() => console.log('Database Connected'))
+  .catch(err => console.log(err));
 
 const connection = mongoose.connection;
 
@@ -79,7 +76,9 @@ todoRoutes.route('/update/:id').post(function(req, res) {
   });
 });
 
-
+// App
+app.use(cors());
+app.use(bodyParser.json());
 app.use('/todos', todoRoutes);
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
