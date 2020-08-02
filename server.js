@@ -79,7 +79,7 @@ todoRoutes.route('/update/:id').post(function(req, res) {
 // App
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/todos', todoRoutes);
+app.use('/api/v1/todos', todoRoutes);
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
