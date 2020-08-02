@@ -7,6 +7,7 @@ export default class EditTodo extends Component {
   constructor(props) {
     super(props);
 
+    // bind event handlers
     this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
     this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
     this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
@@ -22,6 +23,7 @@ export default class EditTodo extends Component {
     }
   }
 
+  // life cycle method
   componentDidMount() {
     axios.get('http://localhost:4000/api/v1/todos/' + this.props.match.params.id)
     .then(response => {
@@ -37,6 +39,7 @@ export default class EditTodo extends Component {
     })
   }
 
+  // event handlers
   onChangeTodoDescription(e) {
     this.setState({
       todo_description: e.target.value
@@ -86,6 +89,7 @@ export default class EditTodo extends Component {
     // this.props.history.push("/");
   }
 
+  // output
   render() {
     if (this.state.to_main === true) {
       return <Redirect to='/' />
