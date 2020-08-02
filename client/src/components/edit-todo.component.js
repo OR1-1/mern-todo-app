@@ -82,11 +82,11 @@ export default class EditTodo extends Component {
 
     axios.post('http://localhost:4000/api/v1/todos/update/' + this.props.match.params.id, selectedTodo)
     .then(res => console.log(res.data))
-    .then(() => this.setState(() => ({
-      to_main: true
-    })))
+    // .then(() => this.setState(() => ({
+    //   to_main: true
+    // })))
 
-    // this.props.history.push("/");
+    this.props.history.push("/");
   }
 
   // output
