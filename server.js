@@ -7,7 +7,7 @@ const path = require('path');
 const todoRoutes = express.Router();
 const PORT = 4000;
 
-let Todo = require('./todo.model');
+let Todo = require('./models/todo.model');
 
 // DataBase
 // mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true }); // deprecated
