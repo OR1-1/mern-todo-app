@@ -19,7 +19,7 @@ export default class EditTodo extends Component {
       todo_responsible: '',
       todo_priority: '',
       todo_completed: false,
-      to_main: false
+      // to_main: false
     }
   }
 
@@ -91,9 +91,9 @@ export default class EditTodo extends Component {
 
   // output
   render() {
-    if (this.state.to_main === true) {
-      return <Redirect to='/' />
-    }
+    // if (this.state.to_main === true) {
+    //   return <Redirect to='/' />
+    // }
     return (
       <div style={{marginTop: 10}}>
         <h3>Create New Todo</h3>
