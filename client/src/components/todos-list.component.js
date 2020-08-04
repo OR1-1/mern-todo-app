@@ -14,16 +14,21 @@ const Todo = props => (
 )
 
 export default class TodosList extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
 
     this.state = {todos: []}
   }
 
+  // react life cycle method
   componentDidMount() {
+    this._isMounted = true;
     axios.get('http://localhost:4000/api/v1/todos/')
     .then(response => {
-      this.setState({ todos: response.data });
+      if (this._isMounted) {
+        this.setState({ todos: response.data });
+      }
     })
     .catch(function (error){
       console.log(error);
@@ -31,13 +36,20 @@ export default class TodosList extends Component {
   }
 
   componentDidUpdate() {
+    this._isMounted = true;
     axios.get('http://localhost:4000/api/v1/todos/')
     .then(response => {
-      this.setState({ todos: response.data });
+      if (this._isMounted) {
+        this.setState({ todos: response.data });
+      }
     })
     .catch(function (error){
       console.log(error);
     })
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   todoList() {
@@ -46,6 +58,7 @@ export default class TodosList extends Component {
     });
   }
 
+  // output
   render() {
     return (
       <div style={{marginTop: 10}}>

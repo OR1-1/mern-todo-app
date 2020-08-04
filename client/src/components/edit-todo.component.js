@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 
 
 export default class EditTodo extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
 
@@ -25,18 +26,25 @@ export default class EditTodo extends Component {
 
   // react life cycle method
   componentDidMount() {
+    this._isMounted = true;
     axios.get('http://localhost:4000/api/v1/todos/' + this.props.match.params.id)
     .then(response => {
-      this.setState({
-        todo_description: response.data.todo_description,
-        todo_responsible: response.data.todo_responsible,
-        todo_priority: response.data.todo_priority,
-        todo_completed: response.data.todo_completed
-      })
+      if (this._isMounted) {
+        this.setState({
+          todo_description: response.data.todo_description,
+          todo_responsible: response.data.todo_responsible,
+          todo_priority: response.data.todo_priority,
+          todo_completed: response.data.todo_completed
+        })
+      }
     })
     .catch(function (error) {
       console.log(error);
     })
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   // event handlers

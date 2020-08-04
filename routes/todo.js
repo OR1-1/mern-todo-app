@@ -56,4 +56,11 @@ todoRoutes.route('/update/:id').post(function(req, res) {
   });
 });
 
+todoRoutes.route('/delete/:id').delete(function(req, res) {
+  Todo.findByIdAndRemove({_id: req.params.id})
+  .then(todo => {
+    res.json(todo)
+  })
+});
+
 module.exports  = todoRoutes
